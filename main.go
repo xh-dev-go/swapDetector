@@ -12,7 +12,6 @@ const VERSION = "1.0.0"
 type UpdateType string
 
 const (
-	Update UpdateType = "UPDATE"
 	Swap   UpdateType = "SWAP"
 )
 
@@ -21,7 +20,7 @@ type UpdateMsg struct {
 	Type     UpdateType
 }
 
-func (updateMsg *UpdateMsg) ToString() string{
+func (updateMsg *UpdateMsg) ToString() string {
 	if bytes, err := json.Marshal(updateMsg); err != nil {
 		panic(err)
 	} else {
@@ -94,6 +93,6 @@ func main() {
 
 	select {
 	case msg := <-fileUpdate:
-		println(msg.ToString())
+		println(msg.FilePath)
 	}
 }
